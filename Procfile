@@ -1,1 +1,1 @@
-web: sh target/bin/webapp/
+web: java $JAVA_OPTS -jar target/webapp --port 44920 target/*.war
