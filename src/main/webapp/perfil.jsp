@@ -1,4 +1,3 @@
-<%@page import="java.text.DecimalFormat"%>
 <%@page import="br.com.fatecpg.portal.Usuario"%>
 <%@page import="br.com.fatecpg.portal.Aula"%>
 <%@page import="br.com.fatecpg.portal.HistoricoTeste"%>
@@ -11,10 +10,7 @@
         <title>Perfil</title>
     </head>
     <body>
-        <%
-            Usuario user = (Usuario) session.getAttribute("usuario_logado");
-            DecimalFormat decimalFormat = new DecimalFormat("#.#");
-        %>
+        <% Usuario user = (Usuario) session.getAttribute("usuario_logado"); %>
         <%@ include file="WEB-INF/jspf/menu.jspf" %>
         <div class="bg-dark py-5">
             <div class="container">
@@ -37,8 +33,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <%
-                                    for (Aula a : Aula.listarAulas(user.getCod())) {%>
+                                <% for (Aula a : Aula.listarAulas(user.getCod())) {%>
                                 <td class="bg-light"><%= a.getNome()%></td>
                                 <td class="bg-light"><%= a.getDisciplina()%></td>
                             </tr>
@@ -62,7 +57,7 @@
                                 <%
                                     for (HistoricoTeste t : HistoricoTeste.listarTestes(user.getCod())) {%>
                                 <td class="bg-light"><%= t.getDisciplina()%></td>
-                                <td class="bg-light"><%= decimalFormat.format(t.getNota())%></td>
+                                <td class="bg-light"><%= t.getNota()%></td>
                             </tr>
                             <%}%>
                         </tbody>

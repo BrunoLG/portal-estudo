@@ -1,17 +1,18 @@
 package br.com.fatecpg.portal;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class HistoricoTeste {
     private int cod;
-    private double nota;
+    private BigDecimal nota;
     private Date data;
     private String curso;
     private String teste;
     private String disciplina;
 
-    public HistoricoTeste(int cod, double nota, Date data, String curso, String teste, String disciplina) {
+    public HistoricoTeste(int cod, BigDecimal nota, Date data, String curso, String teste, String disciplina) {
         this.cod = cod;
         this.nota = nota;
         this.data = data;
@@ -28,11 +29,11 @@ public class HistoricoTeste {
         this.cod = cod;
     }
 
-    public double getNota() {
+    public BigDecimal getNota() {
         return nota;
     }
 
-    public void setNota(double nota) {
+    public void setNota(BigDecimal nota) {
         this.nota = nota;
     }
 
@@ -81,7 +82,7 @@ public class HistoricoTeste {
             Object row[] = list.get(i);
             HistoricoTeste ht = new HistoricoTeste(
                     (int) row[0],
-                    (Double) row[1],
+                    (BigDecimal) row[1],
                     (Date) row[2], 
                     (String) row[3],
                     (String) row[4],
@@ -91,12 +92,11 @@ public class HistoricoTeste {
         return historicoTestes;
     }
     
-    public static void adicionarTesteHistorico (double nota, Date dataAtual, int teste, int usuario) throws Exception{
+    public static void adicionarTesteHistorico (BigDecimal nota, Date dataAtual, int teste, int usuario) throws Exception{
         String SQL = "INSERT INTO TB_HISTORICO_TESTE VALUES (default, ?, ?, ?, ?) ";
         Object parameters[] = {nota, dataAtual, teste, usuario};
         DatabaseConnector.execute(SQL, parameters);
     }
-
 
     public static ArrayList<HistoricoTeste> listarTestes (int cod)throws Exception{
         String SQL = "select cd_historico, cd_nota, dt_teste, nm_curso, nm_usuario, nm_disciplina from tb_historico_teste H " +
@@ -108,7 +108,7 @@ public class HistoricoTeste {
             Object row[] = list.get(i);
             HistoricoTeste t = new HistoricoTeste(
                     (int) row[0],
-                    (double) row[1],
+                    (BigDecimal) row[1],
                     (Date) row[2],
                     (String) row[3],
                     (String) row[4],
