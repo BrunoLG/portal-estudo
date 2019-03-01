@@ -27,7 +27,7 @@
         <%} else {
         %>
         <li class="nav-item">
-            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/aluno/perfil.jsp" role="button">Perfil</a>
+            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/perfil.jsp" role="button">Perfil</a>
         </li>
         <%}%>
         <li class="nav-item">

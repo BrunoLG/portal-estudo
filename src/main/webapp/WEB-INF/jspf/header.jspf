@@ -22,7 +22,7 @@
         response.sendRedirect(request.getRequestURI());
     }
 %>
-<h1>Portal - Grupo 06</h1>
+<h1>Portal de Estudo</h1>
 
 <% if (session.getAttribute("usuario") == null) { %>
 <form method="post">
