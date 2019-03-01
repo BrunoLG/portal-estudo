@@ -1,7 +1,6 @@
 package br.com.fatecpg.portal;
 
 import java.io.File;
-
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
@@ -23,10 +22,10 @@ public class Main {
         tomcat.setPort(Integer.valueOf(webPort));
 
         StandardContext ctx = (StandardContext) tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
-        
+
         File additionWebInfClasses = new File("target/classes");
         WebResourceRoot resources = new StandardRoot(ctx);
-        resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/jspf",
+        resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/",
                 additionWebInfClasses.getAbsolutePath(), "/"));
         ctx.setResources(resources);
 
