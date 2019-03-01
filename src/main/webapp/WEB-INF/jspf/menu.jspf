@@ -1,0 +1,38 @@
+<%@page import="br.com.fatecpg.portal.Usuario"%>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <% String caminho = request.getContextPath(); %>
+    <a class="navbar-brand font-weight-bold" href="<%= caminho%>/index.jsp">Projeto 6</a>
+    <ul class="navbar-nav ml-auto">
+        <%
+            if (session.getAttribute("usuario_logado") == null) { %>
+        <li class="nav-item">
+            <a class="btn btn-light font-weight-bold" href="<%= caminho%>/login.jsp" role="button">Login</a>
+        </li>
+        <%} else {
+            Usuario u = (Usuario) session.getAttribute("usuario_logado");
+            if (u.getPermissao().equals("admin")) {%>
+        <li class="nav-item">
+            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/admin/usuario.jsp" role="button">Usuarios</a>
+        </li>
+         <li class="nav-item">
+            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/admin/curso.jsp" role="button">Cursos</a>
+        </li>
+        <%} else if (u.getPermissao().equals("professor")) {%>
+        <li class="nav-item">
+            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/professor/desempenho.jsp" role="button">Desempenho</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/professor/teste.jsp" role="button">Teste</a>
+        </li>
+        <%} else {
+        %>
+        <li class="nav-item">
+            <a class="btn btn-light font-weight-bold mr-3" href="<%= caminho%>/aluno/perfil.jsp" role="button">Perfil</a>
+        </li>
+        <%}%>
+        <li class="nav-item">
+            <a class="btn btn-light font-weight-bold" href="<%= caminho%>/logout.jsp" role="button">Sair</a>
+        </li>
+        <%}%>
+    </ul>
+</nav>
