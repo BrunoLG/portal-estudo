@@ -1,1 +1,1 @@
-web: sh target/bin/webapp/index.jsp
+web: sh target/bin/webapp/
