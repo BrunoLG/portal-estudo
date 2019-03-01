@@ -1,1 +1,1 @@
-web: java -jar $JAVA_OPTS -Dserver.port=$PORT src/java/br/com/fatec/portal/Main.jar
+web: java $JAVA_OPTS -jar target/classes/Main.jar --port $PORT target/*.war
