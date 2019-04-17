@@ -3,6 +3,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="br.com.fatecpg.portal.HistoricoTeste"%>
 <%@page import="java.text.DecimalFormat"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="br.com.fatecpg.portal.Alternativa"%>
 <%@page import="br.com.fatecpg.portal.Questao"%>
 <%@page import="br.com.fatecpg.portal.Teste"%>
@@ -36,7 +37,8 @@
                     }
                 }
                 try {
-                    HistoricoTeste.adicionarTesteHistorico((resultado / qtQuestoes) * 10, new Date(), codTeste, usuario.getCod());
+                    BigDecimal b = new BigDecimal((resultado / qtQuestoes) * 10);
+                    HistoricoTeste.adicionarTesteHistorico(b, new Date(), codTeste, usuario.getCod());
                 } catch (Exception e) {
                     erro = e.getMessage();
                     System.out.println(erro);
